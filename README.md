@@ -13,4 +13,4 @@ Run below command to run the pipeline:
  streamlit run app.py
 ```
 
-[!AI](./output.png "llm integration")
+![AI application](./output.png "llm integration")
