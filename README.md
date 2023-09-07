@@ -12,5 +12,6 @@ Run below command to run the pipeline:
 ```
  streamlit run app.py
 ```
+The output can be found in **audio.flac**.
 
 ![AI application](./output.png "llm integration")
