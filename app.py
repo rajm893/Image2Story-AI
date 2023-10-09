@@ -17,7 +17,6 @@ def img2text(url):
     # print(text[0]["generated_text"])
     return text
 
-# img2text("two_people_talking.jpg")
 
 ##llm to generate a short story using gpt api key
 def generate_story(scenario):
@@ -29,18 +28,10 @@ def generate_story(scenario):
     STORY:
     """
     prompt= PromptTemplate(template=template, input_variables=["scenario"])
-    
     story_llm = LLMChain(llm=OpenAI(
-    model_name="gpt-3.5-turbo", temperature=1),prompt=prompt,verbose=True)
-    
+    model_name="gpt-3.5-turbo", temperature=0.7),prompt=prompt,verbose=True) 
     story= story_llm.predict(scenario=scenario)
-    
-    print(story)
     return story
-
-# scenario= img2text("two_people_talking.jpg")
-# print(scenario)
-# story=generate_story(scenario)
 
 # text to speech
 def text2speech(message):
@@ -49,21 +40,13 @@ def text2speech(message):
     payloads={
     "inputs":message
     }
-    
-    
     response= requests.post(API_URL,headers= headers,json=payloads)
     with open('audio.flac','wb') as file:
         file.write(response.content)
     
-# scenario= img2text("two_people_talking.jpg")
-# print(scenario)
-# story=generate_story(scenario)
-# text2speech(story)
-    
-    
+
 def main():
     st.set_page_config(page_title="img 2 audio story", page_icon="ABC")
-    
     st.header=("Turn img into auio story")
     uploaded_file=st.file_uploader("Choose an image...", type="jpg")
     
